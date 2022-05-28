@@ -1,3 +1,6 @@
+#ifndef GRID_HPP
+#define GRID_HPP
+
 #include <iostream>
 #include <vector>
 
@@ -41,12 +44,6 @@ class Grid {
      * @brief 
      * 
      */
-    void last();
-
-    /**
-     * @brief 
-     * 
-     */
     void random();
 
     /**
@@ -84,10 +81,14 @@ class Grid {
      */
     int getHeight();
 
+    bool get(int row, int col);
+
     private:
 
     const int m_width;
     const int m_height;
-    std::vector<std::vector<bool>> grid;
+    std::vector<std::vector<bool>> m_grid;
 
 };
+
+#endif

@@ -13,7 +13,7 @@ Grid::Grid(int height, int width) : m_height(height), m_width(width) {
 bool Grid::isRowEmpty(int row) {
     if (row < 0 || row > m_height)
         throw std::out_of_range("define a good index");
-    for (bool value : grid[row])
+    for (bool value : m_grid[row])
         if (value)
             return false;
     return true;
@@ -28,22 +28,22 @@ bool Grid::isEmpty() {
 
 void Grid::initialize() {
     for (int i = 0; i < m_height; i++) {
-        grid.push_back(vector<bool>());
+        m_grid.push_back(vector<bool>());
         for (int j = 0; j < m_width; j++)
-            grid[i].push_back(false);
+            m_grid[i].push_back(false);
     }
 }
 
 void Grid::reset() {
     for (int i = 0; i < m_height; i++)
         for (int j = 0; j < m_width; j++)
-            grid[i][j] = false;
+            m_grid[i][j] = false;
 }
 
 void Grid::reverse() {
     for (int i = 0; i < m_height; i++) 
         for (int j = 0; j < m_width; j++)
-            grid[i][j] = !grid[i][j];
+            m_grid[i][j] = !m_grid[i][j];
 }
 
 void Grid::random() {
@@ -52,7 +52,15 @@ void Grid::random() {
         for (int j = 0; j < m_width; j++) {
             auto finish = std::chrono::high_resolution_clock::now();
             int chrono = std::chrono::duration_cast<std::chrono::nanoseconds>(finish-start).count();
-            grid[i][j] = chrono % 2 == 0;
+            m_grid[i][j] = chrono % 2 == 0;
         }
+
+}
+
+bool Grid::get(int row, int col) {
+    return m_grid[row][col];
+}
+
+void Grid::next() {
 
 }
