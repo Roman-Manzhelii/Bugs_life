@@ -10,6 +10,6 @@ The conway's game of life is a cellular automate made by John Horton Conway in 1
 
 The rules of the conway's game of life are very easy to understand, the game is composed by a grid of tiles called cells, each cells cans to have 2 differents states, dead or alive, and their state depend by the neighbors:
 
-- 2 neighbors -> the cells' state doesn't change.
-- 3 neighbors -> the cell's state become / stay alive
-- otherwise the cell's state become / stay dead
+- **2 neighbors**: the cells' state doesn't change.
+- **3 neighbors**: the cell's state become / stay alive
+- **others**: the cell's state become / stay dead
