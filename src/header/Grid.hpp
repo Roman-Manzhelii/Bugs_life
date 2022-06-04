@@ -15,7 +15,7 @@ class Grid {
      * @param width width of the grid
      * @param height height of the grid 
      */
-    Grid(int width=20, int height=15);
+    Grid(int width, int height);
 
     /**
      * @brief check if the grid is empty
@@ -81,12 +81,32 @@ class Grid {
      */
     int getHeight();
 
+    /**
+     * @brief 
+     * 
+     */
+    void launch();
+
+    void stop();
+
     bool get(int row, int col);
+
+    void update();
+
+    bool launched();
+
+    void updateCell(int row, int col, std::vector<std::vector<bool>> grid);
+
+    bool inRange(int row, int col);
+
+    std::vector<std::vector<bool>> copy();
 
     private:
 
     const int m_width;
     const int m_height;
+
+    bool m_isLaunched;
     std::vector<std::vector<bool>> m_grid;
 
 };
