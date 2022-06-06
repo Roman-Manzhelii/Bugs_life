@@ -99,6 +99,8 @@ class Grid {
 
     bool inRange(int row, int col);
 
+    void set(int row, int col, bool value);
+
     std::vector<std::vector<bool>> copy();
 
     private:

@@ -1,7 +1,7 @@
 #ifndef DISPLAY_HPP
 #define DISPLAY_HPP
 
-#define CELL_DEFAULT_SIZE 19
+#define CELL_DEFAULT_SIZE 29
 
 #include "Grid.hpp"
 #include "SFML/Graphics.hpp"
@@ -22,6 +22,8 @@ class Display {
     void showGrid();
     Grid* getGrid();
     sf::RenderWindow* getWindow();
+    void update();
+    bool isOpen();
 
     private:
 

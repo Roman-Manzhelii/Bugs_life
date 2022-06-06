@@ -108,6 +108,10 @@ bool Grid::launched() {
     return m_isLaunched;
 }
 
+void Grid::set(int row, int col, bool value) {
+    m_grid[row][col] = value;
+}
+
 vector<vector<bool>> Grid::copy() {
     vector<vector<bool>> newGrid;
     for (vector<bool> v : m_grid)

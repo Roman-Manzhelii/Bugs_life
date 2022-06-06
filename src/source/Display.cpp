@@ -27,7 +27,6 @@ void Display::initWindow(int width, int height) {
     m_window->setVerticalSyncEnabled(true);
 }
 
-
 void Display::initGrid(int width, int height) {
     m_grid = new Grid(width, height);
     for (int i = 0; i < height; i++) {
@@ -41,13 +40,12 @@ void Display::initGrid(int width, int height) {
     }
 }
 
-
 void Display::showGrid() {
     m_window->clear();
     for (int i = 0; i < m_displayGrid.size(); i++) 
         for (int j = 0; j < m_displayGrid[i].size(); j++) 
             if (!m_grid->get(i, j)) m_window->draw(*m_displayGrid[i][j]);
-    m_window->display();
+    update();
 }
 
 void Display::deleteGrid() {
@@ -64,6 +62,14 @@ Grid* Display::getGrid() {
 
 sf::RenderWindow* Display::getWindow() {
     return m_window;
+}
+
+void Display::update() {
+    m_window->display();
+}
+
+bool Display::isOpen() {
+    return m_window->isOpen();
 }
 
 

@@ -3,7 +3,8 @@
 using namespace std;
 
 Controls::Controls() {
-
+    m_rowClicked=-1;
+    m_columnClicked=-1;
     m_display = new Display();
     run();
 }
@@ -13,14 +14,11 @@ Controls::~Controls() {
 }
 
 void Controls::run() {
-    while(m_display->getWindow()->isOpen()) {
-        auto start = std::chrono::high_resolution_clock::now();
+    while(m_display->isOpen()) {
         event();
         m_display->getGrid()->update();
         m_display->showGrid();
-        auto end = std::chrono::high_resolution_clock::now();
-        double chrono = (std::chrono::duration_cast<std::chrono::milliseconds>(end-start).count()) / 1000.0;
-        cout << "FPS: " << 1/chrono << endl;
+        changeCellStateByClick();
     }
 }
 
@@ -34,7 +32,15 @@ void Controls::event() {
             case sf::Event::KeyPressed:
                 pressed(event.key.code);
                 break;
-        } 
+            case sf::Event::MouseButtonPressed:
+                m_mouseClicked=true;
+                break;
+            case sf::Event::MouseButtonReleased:
+                m_mouseClicked=false;
+                    m_columnClicked = -1;
+                    m_rowClicked = -1;
+                break;
+        }
     }
 }
 
@@ -56,6 +62,8 @@ void Controls::pressed(sf::Keyboard::Key key) {
 
     case sf::Keyboard::C:
         if(!m_display->getGrid()->launched())m_display->getGrid()->reset();
+        m_columnClicked = -1;
+        m_rowClicked = -1;
         break;
 
     case sf::Keyboard::Space:
@@ -68,5 +76,17 @@ void Controls::pressed(sf::Keyboard::Key key) {
 
     default:
         break;
+    }
+}
+
+void Controls::changeCellStateByClick() {
+    if (m_mouseClicked) {
+        int row = sf::Mouse::getPosition(*m_display->getWindow()).y / (CELL_DEFAULT_SIZE+1);
+        int col = sf::Mouse::getPosition(*m_display->getWindow()).x / (CELL_DEFAULT_SIZE+1);
+        if (row != m_rowClicked || col != m_columnClicked) {
+            m_rowClicked = row;
+            m_columnClicked = col;
+            m_display->getGrid()->set(row, col, !m_display->getGrid()->get(row, col));
+        }
     }
 }

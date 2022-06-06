@@ -1,3 +1,5 @@
 *.o
 .vscode
 sfml-app
+*.sh
+*Node*
