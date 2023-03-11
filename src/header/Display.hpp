@@ -12,7 +12,7 @@ class Display {
 
     public:
 
-    Display(int width=64, int height=32);
+    explicit Display(int width=64, int height=32);
     ~Display();
 
     void initWindow(int width, int height);

@@ -1,5 +1,4 @@
 #include "../header/Controls.hpp"
-#include <chrono>
 using namespace std;
 
 Controls::Controls() {
@@ -23,7 +22,7 @@ void Controls::run() {
 }
 
 void Controls::event() {
-    sf::Event event;
+    sf::Event event{};
     while(m_display->getWindow()->pollEvent(event)) {
         switch (event.type) {
             case sf::Event::Closed:
@@ -39,6 +38,8 @@ void Controls::event() {
                 m_mouseClicked=false;
                     m_columnClicked = -1;
                     m_rowClicked = -1;
+                break;
+            default:
                 break;
         }
     }

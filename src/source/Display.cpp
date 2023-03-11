@@ -1,7 +1,5 @@
 #include "../header/Display.hpp"
 #include "SFML/Graphics.hpp"
-#include <cassert>
-#include <stdexcept>
 
 using namespace std;
 

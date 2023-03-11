@@ -17,12 +17,10 @@ class Controls {
     void event();
     void pressed(sf::Keyboard::Key key);
     void changeCellStateByClick();
-    Display* getDisplay();
 
     private:
 
     Display* m_display;
-    bool m_isRunning;
     bool m_mouseClicked=false;
     int m_rowClicked;
     int m_columnClicked;
