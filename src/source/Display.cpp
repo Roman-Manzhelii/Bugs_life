@@ -28,9 +28,9 @@ void Display::initWindow(int width, int height) {
 void Display::initGrid(int width, int height) {
     m_grid = new Grid(width, height);
     for (int i = 0; i < height; i++) {
-        m_displayGrid.push_back(vector<sf::RectangleShape*>());
+        m_displayGrid.emplace_back();
         for (int j = 0; j < width; j++) {
-            sf::RectangleShape* rect = new sf::RectangleShape(sf::Vector2f(CELL_DEFAULT_SIZE, CELL_DEFAULT_SIZE));
+            auto* rect = new sf::RectangleShape(sf::Vector2f(CELL_DEFAULT_SIZE, CELL_DEFAULT_SIZE));
             m_displayGrid[i].push_back(rect);
             m_displayGrid[i][j]->setFillColor(sf::Color::White);
             m_displayGrid[i][j]->setPosition(sf::Vector2f(j*(CELL_DEFAULT_SIZE+1), i*(CELL_DEFAULT_SIZE+1)));

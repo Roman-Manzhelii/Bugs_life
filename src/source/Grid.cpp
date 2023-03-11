@@ -1,6 +1,4 @@
 #include "../header/Grid.hpp"
-#include <chrono>
-#include <ctime>
 #include <cassert>
 #include <stdexcept>
 #include <algorithm>
@@ -23,7 +21,7 @@ bool Grid::isEmpty() {
     for (int i = 0; i < m_height; i++)
         if (!isRowEmpty(i))
             return false;
-    return true; 
+    return true;
 }
 
 void Grid::initialize() {
@@ -60,7 +58,6 @@ bool Grid::get(int row, int col) {
 }
 
 void Grid::next() {
-    auto start = std::chrono::high_resolution_clock::now();
     std::vector<std::vector<bool>> grid = copy();
     for (int row=0; row < m_height; row++)
         for (int col=0; col < m_width; col++)
