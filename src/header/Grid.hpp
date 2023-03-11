@@ -72,14 +72,14 @@ class Grid {
      * 
      * @return int 
      */
-    int getWidth();
+    int getWidth() const;
 
     /**
      * @brief Get the Height object
      * 
      * @return int 
      */
-    int getHeight();
+    int getHeight() const;
 
     /**
      * @brief 
@@ -93,15 +93,15 @@ class Grid {
 
     void update();
 
-    bool launched();
+    bool launched() const;
 
-    void updateCell(int row, int col, std::vector<std::vector<bool>> grid);
+    void updateCell(int row, int col, std::vector<std::vector<bool>> const& grid);
 
-    bool inRange(int row, int col);
+    bool inRange(int row, int col) const;
 
     void set(int row, int col, bool value);
 
-    std::vector<std::vector<bool>> copy();
+    std::vector<std::vector<bool>> copy() const;
 
     private:
 
