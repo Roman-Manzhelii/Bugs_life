@@ -1,0 +1,7 @@
+# ninja log v5
+42	3039	7326417264181509	CMakeFiles/Bugs_life.dir/src/source/Grid.cpp.obj	f44b62a1f0c2d6e3
+29	2184	7326424800606098	CMakeFiles/Bugs_life.dir/src/source/main.cpp.obj	2a0a3d3a97166f66
+8	2263	7326424801386126	CMakeFiles/Bugs_life.dir/src/source/Controls.cpp.obj	6c18ef1fa128e0b9
+20	2663	7326424805376063	CMakeFiles/Bugs_life.dir/src/source/Display.cpp.obj	cee7a4c8f677f4b6
+2188	3803	7326424816807081	CMakeFiles/Bugs_life.dir/src/source/Grid.cpp.obj	44510c94d67a1ad8
+3804	5781	7326424836398085	Bugs_life.exe	f65d9bc8230a5a5d

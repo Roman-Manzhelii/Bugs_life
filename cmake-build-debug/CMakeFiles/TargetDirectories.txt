@@ -1,0 +1,3 @@
+C:/univer/Projects/Projects_C++/Bugs_life/cmake-build-debug/CMakeFiles/Bugs_life.dir
+C:/univer/Projects/Projects_C++/Bugs_life/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/univer/Projects/Projects_C++/Bugs_life/cmake-build-debug/CMakeFiles/rebuild_cache.dir
