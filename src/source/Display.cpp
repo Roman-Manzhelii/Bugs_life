@@ -1,73 +1,56 @@
-#include "../header/Display.hpp"
-#include "SFML/Graphics.hpp"
+#include "Display.hpp"
+#include <SFML/Graphics.hpp>
 
-using namespace std;
+constexpr int GRID_SIZE = 10;
+constexpr int CELL_MARGIN = 1;
+int CELL_DEFAULT_SIZE = 20;
 
-Display::Display(int width, int height) {
-    initWindow(width, height);
-    initGrid(width, height);
+Display::Display() {
+    initWindow();
+    initGrid();
 }
 
-Display::~Display() {
-    delete m_window;
-    deleteGrid();
-    delete m_grid;
+void Display::initWindow() {
+    int targetWindowSize = 960;
+    int cellPlusMarginSize = targetWindowSize / GRID_SIZE;
+    int cellSize = cellPlusMarginSize - CELL_MARGIN;
+
+    m_window = new sf::RenderWindow(sf::VideoMode(targetWindowSize, targetWindowSize), "10x10 Grid Display");
+    CELL_DEFAULT_SIZE = cellSize;
 }
 
+void Display::initGrid() {
+    m_grid = new Grid(GRID_SIZE, GRID_SIZE);
 
-void Display::initWindow(int width, int height) {
-    // CELL_DEFAULT_SIZE +1 to make a margin between cells
-    m_win_width = (CELL_DEFAULT_SIZE+1) * width;
-    m_win_height = (CELL_DEFAULT_SIZE+1) * height;
-
-    m_window = new sf::RenderWindow(sf::VideoMode(m_win_width, m_win_height), "Conways' game of life");
-    m_window->setFramerateLimit(0);
-    m_window->setVerticalSyncEnabled(true);
-}
-
-void Display::initGrid(int width, int height) {
-    m_grid = new Grid(width, height);
-    for (int i = 0; i < height; i++) {
-        m_displayGrid.emplace_back();
-        for (int j = 0; j < width; j++) {
+    for (int i = 0; i < GRID_SIZE; ++i) {
+        std::vector<sf::RectangleShape*> row;
+        for (int j = 0; j < GRID_SIZE; ++j) {
             auto* rect = new sf::RectangleShape(sf::Vector2f(CELL_DEFAULT_SIZE, CELL_DEFAULT_SIZE));
-            m_displayGrid[i].push_back(rect);
-            m_displayGrid[i][j]->setFillColor(sf::Color::White);
-            m_displayGrid[i][j]->setPosition(sf::Vector2f(j*(CELL_DEFAULT_SIZE+1), i*(CELL_DEFAULT_SIZE+1)));
+            rect->setFillColor(sf::Color::White);
+            rect->setPosition(j * (CELL_DEFAULT_SIZE + CELL_MARGIN), i * (CELL_DEFAULT_SIZE + CELL_MARGIN));
+            row.push_back(rect);
         }
+        m_displayGrid.push_back(row);
     }
 }
 
 void Display::showGrid() {
-    m_window->clear();
-    for (int i = 0; i < m_displayGrid.size(); i++) 
-        for (int j = 0; j < m_displayGrid[i].size(); j++) 
-            if (!m_grid->get(i, j)) m_window->draw(*m_displayGrid[i][j]);
-    update();
-}
+    if (!m_window->isOpen()) return;
 
-void Display::deleteGrid() {
-    for (int i = 0; i < m_grid->getHeight(); i++) {
-        for (auto ptr : m_displayGrid[i]) 
-            delete ptr;
-        m_displayGrid[i].clear();
-    } m_displayGrid.clear();
-}
+    sf::Event event;
+    while (m_window->pollEvent(event)) {
+        if (event.type == sf::Event::Closed) m_window->close();
+    }
 
-Grid* Display::getGrid() {
-    return m_grid;
-}
-
-sf::RenderWindow* Display::getWindow() {
-    return m_window;
-}
-
-void Display::update() {
+    m_window->clear(sf::Color::Black); // Clear with black background
+    for (const auto& row : m_displayGrid) {
+        for (const auto& cell : row) {
+            m_window->draw(*cell);
+        }
+    }
     m_window->display();
 }
 
 bool Display::isOpen() {
     return m_window->isOpen();
 }
-
-
