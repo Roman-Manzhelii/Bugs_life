@@ -13,9 +13,7 @@ include_directories(H:/SFML/include)
 
 # Додати виконуваний файл вашого проекту
 add_executable(Bugs_life
-        src/header/Display.hpp
         src/header/Grid.hpp
-        src/source/Display.cpp
         src/source/Grid.cpp
         src/source/main.cpp
         src/source/Bug.cpp
@@ -24,7 +22,10 @@ add_executable(Bugs_life
         src/header/Crawler.h
         src/source/Hopper.cpp
         src/header/Hopper.h
-        src/header/Hopper.h)
+        src/header/Hopper.h
+        src/header/Game.h
+        src/source/Game.cpp
+        src/source/Game.cpp)
 
 # Лінкувати бібліотеки SFML з вашим проектом
 target_link_libraries(Bugs_life sfml-system sfml-window sfml-graphics sfml-audio)

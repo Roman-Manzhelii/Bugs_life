@@ -1,0 +1,10 @@
+101 Crawler (0,0) 10 West Alive
+102 Hopper (1,1) 8 South Alive
+103 Crawler (2,2) 5 East Alive
+104 Hopper (3,3) 7 North Alive
+105 Crawler (4,4) 6 West Alive
+106 Hopper (5,5) 9 South Alive
+107 Crawler (6,6) 4 East Alive
+108 Hopper (7,7) 7 North Alive
+109 Crawler (8,8) 3 West Alive
+110 Hopper (9,9) 8 South Alive

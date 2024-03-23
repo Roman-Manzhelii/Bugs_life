@@ -24,6 +24,7 @@ public:
     std::pair<int, int> getPosition() const { return position; }
     int getDirection() const { return direction; }
     int getSize() const { return size; }
+    bool isAlive() const { return alive; }
     virtual std::string getType() const = 0;
 };
 
