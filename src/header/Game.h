@@ -10,23 +10,28 @@
 
 class Game {
 public:
-    enum GameState {
-        MENU,
-        DISPLAY_BUGS,
-        DISPLAY_GRID,
-        EXIT
-    };
-
     Game();
-
     void run();
 
 private:
+    enum GameState {
+        MENU,
+        DISPLAY_BUGS,
+        FIND_BUG,
+        DISPLAY_GRID,
+        EXIT
+    } currentState;
+
     sf::RenderWindow window;
     sf::Font font;
     std::vector<sf::Text> menuItems;
     Grid grid;
-    GameState currentState;
+    std::string searchResult;
+    std::string userInput;
+    bool inputActive = false;
+    bool ignoreNextTextEntered = false;
+    sf::Text inputTextDisplay;
+    sf::Text resultText;
 
     void initMenu();
 
@@ -38,9 +43,11 @@ private:
 
     void displayBugs();
 
+    void findBugById(int id);
+
     void displayGrid();
 
-    std::string directionToString(int direction);
+    static std::string directionToString(int direction);
 
     void loadBugBoard();
 

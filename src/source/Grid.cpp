@@ -46,7 +46,6 @@ void Grid::saveLifeHistoryToFile(const std::string& filePath) {
     }
 
     for (const auto& bug : m_bugs) {
-        // Припускаю, що у вас є методи для отримання необхідної інформації від комах
         outFile << bug->getId() << " "
                 << bug->getType() << " ("
                 << bug->getPosition().first << ","
@@ -57,15 +56,19 @@ void Grid::saveLifeHistoryToFile(const std::string& filePath) {
     }
 }
 
+const std::vector<std::unique_ptr<Bug>>& Grid::getBugs() const {
+    return m_bugs;
+}
+
 std::vector<Bug*> Grid::getBugsInCell(int x, int y) const {
     std::vector<Bug*> bugsInCell;
     for (const auto& bug : m_bugs) {
         if (x < 0 || x >= m_width || y < 0 || y >= m_height) {
             std::cerr << "Coordinates out of bounds" << std::endl;
-            return {}; // Повернення порожнього вектора
+            return {};
         }
         if (bug->getPosition().first == x && bug->getPosition().second == y) {
-            bugsInCell.push_back(bug.get()); // Додавання комахи до списку
+            bugsInCell.push_back(bug.get());
         }
     }
     return bugsInCell;
