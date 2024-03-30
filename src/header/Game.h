@@ -19,6 +19,8 @@ private:
         DISPLAY_BUGS,
         FIND_BUG,
         DISPLAY_GRID,
+        DISPLAY_LIFE_HISTORY,
+        DISPLAY_CELLS,
         EXIT
     } currentState;
 
@@ -32,6 +34,9 @@ private:
     bool ignoreNextTextEntered = false;
     sf::Text inputTextDisplay;
     sf::Text resultText;
+    sf::Texture hopperTexture;
+    sf::Texture crawlerTexture;
+    float scrollOffset;
 
     void initMenu();
 
@@ -55,8 +60,12 @@ private:
 
     void renderMenu();
 
-    void waitForInput();
-
     void handleKeyPress(sf::Keyboard::Key key);
+
+    void tapBugBoard();
+
+    void displayLifeHistory();
+
+    void displayCellsAndBugs();
 };
 #endif //BUGS_LIFE_GAME_H

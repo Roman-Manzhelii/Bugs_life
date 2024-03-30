@@ -1,14 +1,11 @@
 #include "Hopper.h"
 #include <cstdlib>
-#include <ctime>
 
 Hopper::Hopper(int id, std::pair<int, int> position, int direction, int size, int hopLength)
         : Bug(id, position, direction, size), hopLength(hopLength) {
 }
 
 void Hopper::move() {
-    srand(static_cast<unsigned int>(time(nullptr)));
-
     // If the way is blocked, choose a new direction randomly until it's not blocked
     while (isWayBlocked()) {
         direction = rand() % 4 + 1; // Random direction between 1 and 4

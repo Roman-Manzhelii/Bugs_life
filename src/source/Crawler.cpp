@@ -1,15 +1,11 @@
 #include "Crawler.h"
 #include <cstdlib>
-#include <ctime>
 
 Crawler::Crawler(int id, std::pair<int, int> position, int direction, int size)
         : Bug(id, position, direction, size) {
 }
 
 void Crawler::move() {
-
-    srand(static_cast<unsigned int>(time(nullptr)));
-
     // Choose a new direction randomly until it's not blocked
     while (isWayBlocked()) {
         direction = rand() % 4 + 1; // Random direction between 1 and 4

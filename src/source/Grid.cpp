@@ -47,14 +47,16 @@ void Grid::saveLifeHistoryToFile(const std::string& filePath) {
 
     for (const auto& bug : m_bugs) {
         outFile << bug->getId() << " "
-                << bug->getType() << " ("
-                << bug->getPosition().first << ","
-                << bug->getPosition().second << ") "
-                << bug->getSize() << " "
-                << directionToString(bug->getDirection()) << " "
-                << (bug->isAlive() ? "Alive" : "Dead") << "\n";
+                << bug->getType() << " Path: ";
+
+        for (const auto& pos : bug->getPath()) {
+            outFile << "(" << pos.first << "," << pos.second << "),";
+        }
+
+        outFile << (bug->isAlive() ? " Alive!" : " Dead") << "\n";
     }
 }
+
 
 const std::vector<std::unique_ptr<Bug>>& Grid::getBugs() const {
     return m_bugs;
@@ -74,15 +76,6 @@ std::vector<Bug*> Grid::getBugsInCell(int x, int y) const {
     return bugsInCell;
 }
 
-std::string Grid::directionToString(int direction) {
-    switch (direction) {
-        case 1: return "North";
-        case 2: return "East";
-        case 3: return "South";
-        case 4: return "West";
-        default: return "Unknown";
-    }
-}
-
 int Grid::getWidth() const { return m_width; }
 int Grid::getHeight() const { return m_height; }
+

@@ -1,5 +1,9 @@
 #include "Bug.h"
 
+Bug::Bug(int id, std::pair<int, int> position, int direction, int size) : id(id), position(position), direction(direction), size(size), alive(true) {
+    path.push_back(position);
+}
+
 bool Bug::isWayBlocked() const {
     const int MAX_X = 9, MAX_Y = 9;
 
@@ -15,5 +19,9 @@ bool Bug::isWayBlocked() const {
         default:
             return false;
     }
+}
+
+const std::list<std::pair<int, int>> &Bug::getPath() const {
+    return path;
 }
 
