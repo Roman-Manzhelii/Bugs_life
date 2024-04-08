@@ -27,7 +27,9 @@ add_executable(Bugs_life
         src/source/Game.cpp
         src/source/Game.cpp
         src/source/SuperBug.cpp
-        src/header/SuperBug.h)
+        src/header/SuperBug.h
+        src/header/DiagonalBug.h
+        src/source/DiagonalBug.cpp)
 
 # Лінкувати бібліотеки SFML з вашим проектом
 target_link_libraries(Bugs_life sfml-system sfml-window sfml-graphics sfml-audio)

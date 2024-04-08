@@ -28,6 +28,7 @@ void Hopper::move() {
                     position.first -= 1;
                     break;
             }
+
         } else {
             // If the hop cannot be completed because of hitting the edge, stop the hop
             break;

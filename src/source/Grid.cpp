@@ -38,6 +38,9 @@ void Grid::loadBugsFromFile(const std::string& filePath) {
             case 'C': // Crawler
                 m_bugs.push_back(std::make_unique<Crawler>(id, std::make_pair(x, y), direction, size));
                 break;
+            case 'D': // DiagonalBug
+                m_bugs.push_back(std::make_unique<DiagonalBug>(id, std::make_pair(x, y), direction, size));
+                break;
             case 'S': // SuperBug
                 m_bugs.push_back(std::make_unique<SuperBug>(id, std::make_pair(x, y), direction, size));
                 break;

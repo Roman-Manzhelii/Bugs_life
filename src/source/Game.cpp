@@ -15,6 +15,9 @@ Game::Game() : window(sf::VideoMode(800, 800), "Bug Game"), grid(10, 10), curren
     if (!crawlerTexture.loadFromFile("../Crawler.png")) {
         std::cerr << "Failed to load Crawler image\n";
     }
+    if (!diagonalBugTexture.loadFromFile("../DiagonalBug.png")) {
+        std::cerr << "Failed to load DiagonalBug image\n";
+    }
     if (!superBugTexture.loadFromFile("../SuperBug.png")) {
         std::cerr << "Failed to load SuperBug image\n";
     }
@@ -362,6 +365,8 @@ void Game::displayGrid() {
                     sprite.setTexture(hopperTexture);
                 } else if (bugsInCell[0]->getType() == "Crawler") {
                     sprite.setTexture(crawlerTexture);
+                } else if (bugsInCell[0]->getType() == "DiagonalBug") {
+                    sprite.setTexture(diagonalBugTexture);
                 } else if (bugsInCell[0]->getType() == "SuperBug") {
                     sprite.setTexture(superBugTexture);
                 }
@@ -372,9 +377,12 @@ void Game::displayGrid() {
                         j * (CELL_SIZE + CELL_MARGIN) + CELL_SIZE / 2,
                         i * (CELL_SIZE + CELL_MARGIN) + CELL_SIZE / 2
                 );
+
+                // Conditionally adjust the scale for DiagonalBug
+                float scaleMultiplier = (bugsInCell[0]->getType() == "DiagonalBug") ? 1.5f : 1.0f;
                 sprite.setScale(
-                        (float)CELL_SIZE / sprite.getTexture()->getSize().x,
-                        (float)CELL_SIZE / sprite.getTexture()->getSize().y
+                        (float)CELL_SIZE / sprite.getTexture()->getSize().x * scaleMultiplier,
+                        (float)CELL_SIZE / sprite.getTexture()->getSize().y * scaleMultiplier
                 );
 
                 // Set the rotation of the sprite based on the direction
