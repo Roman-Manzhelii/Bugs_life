@@ -38,6 +38,9 @@ void Grid::loadBugsFromFile(const std::string& filePath) {
             case 'C': // Crawler
                 m_bugs.push_back(std::make_unique<Crawler>(id, std::make_pair(x, y), direction, size));
                 break;
+            case 'D': // DiagonalBug
+                m_bugs.push_back(std::make_unique<DiagonalBug>(id, std::make_pair(x, y), direction, size));
+                break;
             case 'S': // SuperBug
                 m_bugs.push_back(std::make_unique<SuperBug>(id, std::make_pair(x, y), direction, size));
                 break;
@@ -75,10 +78,6 @@ const std::vector<std::unique_ptr<Bug>>& Grid::getBugs() const {
 std::vector<Bug*> Grid::getAllBugsInCell(int x, int y) const {
     std::vector<Bug*> bugsInCell;
     for (const auto& bug : m_bugs) {
-        if (x < 0 || x >= m_width || y < 0 || y >= m_height) {
-            std::cerr << "Coordinates out of bounds" << std::endl;
-            return {}; // Early return if the coordinates are out of the grid bounds.
-        }
         if (bug->getPosition().first == x && bug->getPosition().second == y) {
             bugsInCell.push_back(bug.get());
         }

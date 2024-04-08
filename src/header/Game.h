@@ -37,6 +37,7 @@ private:
     sf::Text resultText; // Text display for search results
     sf::Texture hopperTexture; // Texture for Hopper bugs
     sf::Texture crawlerTexture; // Texture for Crawler bugs
+    sf::Texture diagonalBugTexture; // Texture for DiagonalBug
     sf::Texture superBugTexture; // Texture for SuperBug
     float scrollOffset; // Offset for scrolling text displays
 

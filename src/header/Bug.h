@@ -25,7 +25,7 @@ public:
     virtual void move() = 0;
 
     // Checks if the bug's way is blocked, to be implemented based on game logic
-    bool isWayBlocked() const;
+    virtual bool isWayBlocked() const;
 
     // Getter methods for bug properties
     int getId() const;
