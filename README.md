@@ -7,6 +7,17 @@
 ### Board
 ![](board.png)
 
+### Crawler
+![](Crawler.png)
+
+### Hopper
+![](Hopper.png)
+
+### Diagonal Bug
+![](DiagonalBug.png)
+
+### Super Bug
+![](SuperBug.png)
 # Inputs
 
  |    Input   |       Action       |
