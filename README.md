@@ -24,15 +24,15 @@
 
 ## Inputs
 
-| Input       | Action                                    |
-|:-----------:|:-----------------------------------------:|
-| Q           | Return to the menu                        |
-| Enter       | Search (in mode "Find a bug")             |
-| Mouse Left  | 'Tap' the board                           |
-| Up Arrow    | Scrolling (in mode "Life history", "all cells") or Move up super bug |
+|    Input    |                                 Action                                 |
+|:-----------:|:----------------------------------------------------------------------:|
+|      Q      |                           Return to the menu                           |
+|    Enter    |                     Search (in mode "Find a bug")                      |
+| Mouse Left  |                            'Tap' the board                             |
+|  Up Arrow   |  Scrolling (in mode "Life history", "all cells") or Move up super bug  |
 | Down Arrow  | Scrolling (in mode "Life history", "all cells") or Move down super bug |
-| Left Arrow  | Move left super bug                       |
-| Right Arrow | Move right super bug                      |
+| Left Arrow  |                          Move left super bug                           |
+| Right Arrow |                          Move right super bug                          |
 
 ## Features
 
